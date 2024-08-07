@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Answering AI - AI call answering service</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <!-- Styles -->
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="icon" href="/icon.png" type="image/x-icon">
+    <link rel="canonical" href="https://answering.ai">
+    <link rel="alternate" hreflang="en-cl" href="https://answering.ai">
+    <link rel="alternate" hreflang="es-cl" href="https://answering.ai">
+    <link rel="alternate" hreflang="en-x-default" href="https://voiceanswering.ai">
+    <script defer="" data-domain="answering.ai" src="js/script.js"></script>
+    <style>
+        /* Scope these styles to avoid affecting other elements */
+        .group .image-opacity {
+            opacity: 0.5;
+            transition: opacity 1s ease;
+        }
+
+        .group .button .flip-card {
+            width: 100px;
+            height: 100px;
+            perspective: 1000px;
+            display: none;
+            /* Initially hide the button */
+        }
+
+        .group .button .flip-card.visible {
+            display: block;
+            /* Initially hide the button */
+        }
+
+        .group .button .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+        }
+
+        .group .button.rotate-3d-active .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .group .button .flip-card-front,
+        .group .button .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .group .button .flip-card-front {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .group .button .flip-card-back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotateY(180deg);
+        }
+
+        .group .image-opacity-hidden {
+            opacity: 0;
+        }
+
+        .group .button.visible {
+            display: block;
+            /* Show the button when audio is loaded */
+        }
+
+        #mobile-menu a {
+            transition: all 0.3s ease;
+        }
+
+        #mobile-menu a:hover {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen bg-white ">
+
+    <header class="relative z-30 bg-white">
+        <div class="px-8 mx-auto xl:px-5 max-w-7xl">
+            <div class="flex items-center justify-between md:justify-start md:space-x-6 py-8">
+                <div class="inline-flex">
+                    <a href="/"
+                        class="flex items-center justify-center space-x-3 transition-all duration-1000 ease-out transform text-wave-500">
+                        <img class="h-6 md:h-6" src="images/oF3Gtqn.png" alt="Answering AI">
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center justify-end flex-1 space-x-6">
+                    <a href="/app/login/"
+                        class="text-base font-medium leading-6 text-gray-500 whitespace-no-wrap hover:text-gray-800 focus:outline-none focus:text-gray-900">
+                        Sign in
+                    </a>
+                    <span class="inline-flex shadow-sm">
+                        <a href="/app/signup/"
+                            class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap transition duration-150 ease-in-out border border-transparent bg-black hover:bg-black focus:outline-none focus:border-gray-900 focus:shadow-outline-wave active:bg-black">
+                            Sign up
+                        </a>
+                    </span>
+                </nav>
+                <button id="hamburger" class="block md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden">
+                <a href="/app/login/"
+                    class="block px-4 py-2 text-base font-medium leading-6 text-gray-500 hover:text-gray-800 focus:outline-none focus:text-gray-900">
+                    Sign in
+                </a>
+                <a href="/app/signup/"
+                    class="block px-4 py-2 mt-1 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-black hover:bg-black focus:outline-none focus:border-gray-900 focus:shadow-outline-wave active:bg-black">
+                    Sign up
+                </a>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="relative w-full h-auto py-0 overflow-hidden bg-white lg:py-42 tails-selected-element"
+        style="min-height: calc(100vh - 106px); display: flex; align-items: center;">
+        <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent to-white"></div>
+        <div class="relative flex flex-col items-center justify-start h-full mx-auto px-14 max-w-7xl lg:flex-row">
+
+            <div class="relative z-10 w-full h-full lg:w-1/2 xl:pr-12 2xl:pr-24">
+                <div class="flex flex-col items-start justify-center h-full pt-3 lg:pt-0">
+                    <h1
+                        class="max-w-lg mx-auto text-4xl font-light tracking-tight text-center text-gray-900 lg:mx-0 sm:text-5xl lg:text-6xl lg:text-left">
+                        AI that answers your phone calls
+                    </h1>
+                    <p class="max-w-md mx-auto mt-4 text-center text-gray-800 lg:mx-0 lg:text-left md:text-lg">
+                        Your customers will be blown away when they hear your own AI phone agent. Answers your calls
+                        24/7
+                    </p>
+                    <div class="max-w-lg mx-auto lg:mx-0">
+                        <div
+                            class="flex flex-col items-center justify-center w-full my-6 space-y-4 lg:flex-row lg:justify-start lg:space-y-0 lg:space-x-6 lg:my-10">
+                            <a href="/app/signup/"
+                                class="flex items-center justify-center w-full px-8 py-4 text-sm tracking-tight transition duration-200 transform hover:scale-105 sm:px-6 sm:text-lg bg-gradient-to-tr bg-black border-gray-800 border-2 text-white lg:w-auto">
+                                Start Free Trial
+                            </a>
+                            <a href="#" onclick="modalOpen('#demoModal'); return false;"
+                                class="flex items-center justify-center w-full px-8 py-4 text-sm tracking-tight transition duration-200 transform hover:scale-105 sm:px-6 sm:text-lg group border-gray-800 border-2 text-gray-800 lg:w-auto">
+                                <svg class="w-5 mr-2 text-gray-800 fill-current group-hover:text-gray-800" fill="none"
+                                    stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z">
+                                    </path>
+                                </svg>
+                                Call to Try
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div
+                class="relative z-10 w-full h-full md:pb-32 md:mt-16 lg:w-1/2 md:px-20 lg:px-5 xl:px-0 lg:pb-0 lg:mt-0 group">
+                <div class="relative flex items-center justify-center w-full h-full">
+                    <div class="relative w-full h-auto md:h-full lg:h-auto">
+                        <div class="relative w-full h-auto overflow-hidden rounded-xl flex items-center justify-center">
+                            <img class="w-full image-opacity" src="images/audio.png" alt="AI phone answering service">
+                            <div id="chart-container" class="image-opacity-hidden"
+                                style="width: 100%; height: 100%; position: absolute; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                                _echarts_instance_="ec_1722711322101">
+                                <div
+                                    style="position: relative; width: 584px; height: 417px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                </div>
+                            </div>
+                            <button type="button" class="absolute button" onclick="toggleState(); return false;">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <svg class="text-gray-800 h-24" fill="none" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path fill="black" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                <path fill="white" d="M9 8l7 4-7 4V8z"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <svg class="text-gray-800 h-24" fill="none" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path fill="black" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                <path fill="white" d="M10 8h1v8h-1zM13 8h1v8h-1z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="sr-only">Listen to a demo.</span>
+                                </div>
+                            </button>
+                            <button type="button" class="absolute button" onclick="toggleState(); return false;">
+                                <div class="flip-card visible">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <svg class="text-gray-800 h-24" fill="none" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path fill="black" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                <path fill="white" d="M9 8l7 4-7 4V8z"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <svg class="text-gray-800 h-24" fill="none" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path fill="black" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                <path fill="white" d="M10 8h1v8h-1zM13 8h1v8h-1z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="sr-only">Listen to a demo.</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+    <section class="relative w-full h-auto py-20 bg-black lg:py-42">
+        <div class="relative flex flex-col items-center justify-start h-full mx-auto px-14 max-w-3xl">
+            <!-- Title Section -->
+            <div class="w-full text-center text-white mb-10">
+                <h2 class="text-2xl font-light tracking-tight sm:text-3xl lg:text-3xl">Get the latest AI technology to
+                    answer your phone</h2>
+                <p class="text-lg italic">In minutes and without any coding</p>
+            </div>
+            <!-- Feature Section -->
+            <div class="w-full flex flex-col gap-10 mb-10">
+                <!-- OpenAI GPT-4o -->
+                <div class="border border-gray-600 text-white rounded-lg shadow-lg flex flex-col lg:flex-row p-6">
+                    <div class="w-full lg:w-2/3 order-2 lg:order-1 text-center lg:text-left">
+                        <p>Connect the most powerful AI model in less than 2 minutes, <span class="italic">no coding
+                                required</span></p>
+                    </div>
+                    <div class="w-full lg:w-1/3 order-1 lg:order-2 flex items-center justify-center mb-4 lg:mb-0">
+                        <img src="images/openai.png" alt="OpenAI GPT-4o" class="h-16">
+                    </div>
+                </div>
+                <!-- Twilio -->
+                <div class="border border-gray-600 text-white rounded-lg shadow-lg flex flex-col lg:flex-row p-6">
+                    <div class="w-full lg:w-2/3 order-2 lg:order-1 text-center lg:text-left">
+                        <p>Connect your own Twilio phone number and have <span class="italic">total control of your
+                                number</span></p>
+                    </div>
+                    <div class="w-full lg:w-1/3 order-1 lg:order-2 flex items-center justify-center mb-4 lg:mb-0">
+                        <img src="images/twilio.png" alt="Twilio" class="h-16">
+                    </div>
+                </div>
+            </div>
+            <!-- Call to Action Button -->
+            <div class="w-full text-center">
+                <a href="/app/signup/"
+                    class="inline-block px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition duration-300">Start
+                    Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative w-full h-auto py-20 bg-white lg:py-42">
+        <div class="relative flex flex-col items-center justify-start h-full mx-auto px-14 max-w-5xl">
+            <!-- Title Section -->
+            <div class="w-full text-center text-black mb-10">
+                <h2 class="text-2xl font-light tracking-tight sm:text-3xl lg:text-3xl">For every type of business</h2>
+                <p class="text-lg italic">AI call answering service</p>
+            </div>
+            <!-- Business Types Section -->
+            <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Small businesses -->
+                <div
+                    class="border border-gray-300 bg-gray-100 text-black rounded-lg flex items-center justify-center p-6">
+                    <span class="text-3xl mr-4">🏢</span>
+                    <p class="text-xl">Small businesses</p>
+                </div>
+                <!-- Law Offices -->
+                <div
+                    class="border border-gray-300 bg-gray-100 text-black rounded-lg flex items-center justify-center p-6">
+                    <span class="text-3xl mr-4">⚖️</span>
+                    <p class="text-xl">Law Offices</p>
+                </div>
+                <!-- Online Stores -->
+                <div
+                    class="border border-gray-300 bg-gray-100 text-black rounded-lg flex items-center justify-center p-6">
+                    <span class="text-3xl mr-4">🛒</span>
+                    <p class="text-xl">Online Stores</p>
+                </div>
+                <!-- Dental practices -->
+                <div
+                    class="border border-gray-300 bg-gray-100 text-black rounded-lg flex items-center justify-center p-6">
+                    <span class="text-3xl mr-4">🦷</span>
+                    <p class="text-xl">Dental practices</p>
+                </div>
+                <!-- Agencies -->
+                <div
+                    class="border border-gray-300 bg-gray-100 text-black rounded-lg flex items-center justify-center p-6">
+                    <span class="text-3xl mr-4">🎯</span>
+                    <p class="text-xl">Agencies</p>
+                </div>
+                <!-- SaaS websites -->
+                <div
+                    class="border border-gray-300 bg-gray-100 text-black rounded-lg flex items-center justify-center p-6">
+                    <span class="text-3xl mr-4">💻</span>
+                    <p class="text-xl">SaaS websites</p>
+                </div>
+                <!-- Barber shops -->
+                <div
+                    class="border border-gray-300 bg-gray-100 text-black rounded-lg flex items-center justify-center p-6">
+                    <span class="text-3xl mr-4">💈</span>
+                    <p class="text-xl">Barber shops</p>
+                </div>
+                <!-- Event Producers -->
+                <div
+                    class="border border-gray-300 bg-gray-100 text-black rounded-lg flex items-center justify-center p-6">
+                    <span class="text-3xl mr-4">🎉</span>
+                    <p class="text-xl">Event Producers</p>
+                </div>
+                <!-- And much more -->
+                <div
+                    class="border border-gray-300 bg-gray-100 text-black rounded-lg flex items-center justify-center p-6">
+                    <span class="text-3xl mr-4">💡</span>
+                    <p class="text-xl">And much more</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="relative w-full h-auto py-20 bg-black lg:py-42">
+        <div class="relative flex flex-col items-center justify-start h-full mx-auto px-14 max-w-3xl">
+            <!-- Title Section -->
+            <div class="w-full text-center text-white mb-10">
+                <h2 class="text-2xl font-light tracking-tight sm:text-3xl lg:text-3xl">Simple &amp; Transparent Pricing
+                </h2>
+            </div>
+            <!-- Pricing Plans Section -->
+            <div class="w-full flex flex-col gap-10">
+                <!-- Solo Business Plan -->
+                <div class="border border-gray-600 text-white rounded-lg shadow-lg flex flex-col lg:flex-row">
+                    <div
+                        class="flex items-center justify-center w-full lg:w-1/3 border-gray-600 lg:border-r border-b lg:border-b-0">
+                        <div class="text-center p-6">
+                            <h2 class="text-5xl font-semibold">$99</h2>
+                            <p class="text-xl font-light">/ month</p>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-2/3 pl-8 p-6 text-center lg:text-left">
+                        <h3 class="text-xl font-semibold mb-4">Solo Business Plan</h3>
+                        <ul class="list-disc list-inside">
+                            <li>2,000 minutes ($0.05 extra minute)</li>
+                            <li>1 Twilio Phone number connection</li>
+                            <li>GPT-4o connection</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Agency Plan -->
+                <div class="border border-gray-600 text-white rounded-lg shadow-lg flex flex-col lg:flex-row">
+                    <div
+                        class="flex items-center justify-center w-full lg:w-1/3 border-gray-600 lg:border-r border-b lg:border-b-0">
+                        <div class="text-center p-6">
+                            <h2 class="text-5xl font-semibold">$299</h2>
+                            <p class="text-xl font-light">/ month</p>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-2/3 pl-8 p-6 text-center lg:text-left">
+                        <h3 class="text-xl font-semibold mb-4">Agency Plan</h3>
+                        <ul class="list-disc list-inside">
+                            <li>6,000 minutes ($0.04 extra minute)</li>
+                            <li>3 Twilio Phone number connections</li>
+                            <li>GPT-4o connection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Section -->
+            <div class="w-full text-center text-white mt-10 border border-gray-600 py-6 px-3">
+                <p>Looking for a Whitelabel reseller Plan? <br class="block md:hidden"> <a href="#"
+                        onclick="modalOpen('#supportModal'); return false;"
+                        class="text-white font-bold underline">Contact us</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative w-full h-auto py-20 bg-gray-100 lg:py-42">
+        <div class="relative flex flex-col items-center justify-start h-full mx-auto px-14 max-w-5xl">
+            <!-- Title Section -->
+            <div class="w-full text-center text-black mb-10">
+                <h2 class="text-2xl font-light tracking-tight sm:text-3xl lg:text-3xl">Bring the power of AI to your
+                    phone</h2>
+                <p class="text-lg italic">Fast, reliable and easy</p>
+            </div>
+            <!-- Features Section -->
+            <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Latest Voices from OpenAI -->
+                <div class="bg-white rounded-lg p-6 flex flex-col items-center text-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                        <span class="text-3xl text-indigo-600">✨</span>
+                    </div>
+                    <h3 class="text-xl mb-2">Cutting-edge AI</h3>
+                    <p class="text-gray-700 text-sm">Powered by GPT-4o. Use your own API key to leverage OpenAI's TTS,
+                        STT and LLM without code.</p>
+                </div>
+                <!-- Multilingual Voice Recognition -->
+                <div class="bg-white rounded-lg p-6 flex flex-col items-center text-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-full mb-4">
+                        <span class="text-3xl text-yellow-600">🌍</span>
+                    </div>
+                    <h3 class="text-xl mb-2">Worldwide coverage</h3>
+                    <p class="text-gray-700 text-sm">Connect local and mobile voice-capable phone numbers around the
+                        world from your Twilio account.</p>
+                </div>
+                <!-- Mid Conversation Language Switching -->
+                <div class="bg-white rounded-lg p-6 flex flex-col items-center text-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                        <span class="text-3xl text-blue-600">🔄</span>
+                    </div>
+                    <h3 class="text-xl mb-2">Language switching</h3>
+                    <p class="text-gray-700 text-sm">Your callers can switch languages mid-conversation without any
+                        hiccup.</p>
+                </div>
+                <!-- Fast Responses -->
+                <div class="bg-white rounded-lg p-6 flex flex-col items-center text-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
+                        <span class="text-3xl text-green-600">⚡</span>
+                    </div>
+                    <h3 class="text-xl mb-2">Fast Responses</h3>
+                    <p class="text-gray-700 text-sm">Experience responses in as fast as 500ms. Have lifelike and snappy
+                        conversations</p>
+                </div>
+                <!-- Enter Information in Prompt -->
+                <div class="bg-white rounded-lg p-6 flex flex-col items-center text-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-pink-100 rounded-full mb-4">
+                        <span class="text-3xl text-pink-600">📝</span>
+                    </div>
+                    <h3 class="text-xl mb-2">Simple prompting</h3>
+                    <p class="text-gray-700 text-sm">Just like ChatGPT, prompt the behavior of your AI receptionist
+                        using a text prompt.</p>
+                </div>
+                <!-- External Actions Without Code -->
+                <div class="bg-white rounded-lg p-6 flex flex-col items-center text-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
+                        <span class="text-3xl text-purple-600">🔗</span>
+                    </div>
+                    <h3 class="text-xl mb-2">External actions</h3>
+                    <p class="text-gray-700 text-sm">Fetch external data easily. Just define the external services to
+                        connect to, in your prompt.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="overflow-hidden bg-black py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2 lg:items-start">
+                <div class="px-6 md:px-0 lg:pr-4 lg:pt-4">
+                    <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+                        <p class="mt-2 text-2xl font-light tracking-tight text-gray-100 sm:text-4xl">Modify behavior or
+                            trigger external actions only using prompts</p>
+                        <p class="mt-6 text-base text-gray-400">Just like when prompting ChatGPT, you are free to create
+                            your rules, your way. Answering AI can also connect to any external service, just providing
+                            the information where to fetch or send data.</p>
+                        <dl class="mt-10 max-w-xl space-y-8 text-sm text-gray-400 lg:max-w-none">
+                            <div class="relative pl-9">
+                                <dt class="inline font-semibold text-gray-100">
+                                    <svg class="absolute left-1 top-1 h-5 w-5 text-gray-400" data-slot="icon"
+                                        fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5">
+                                        </path>
+                                    </svg>
+                                    No coding experience needed.
+                                </dt>
+                                <dd class="inline">Answering AI gives the tools to GPT-4o to create mid-call connections
+                                    with any system. Just add the information on how to connect to your prompt.</dd>
+                            </div>
+                            <div class="relative pl-9">
+                                <dt class="inline font-semibold text-gray-100">
+                                    <svg class="absolute left-1 top-1 h-5 w-5 text-gray-400" data-slot="icon"
+                                        fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z">
+                                        </path>
+                                    </svg>
+                                    Total freedom.
+                                </dt>
+                                <dd class="inline">Create your AI phone receptionist your way. Include working hours,
+                                    products, and scenarios for your receptionist to imitate.</dd>
+                            </div>
+                            <div class="relative pl-9">
+                                <dt class="inline font-semibold text-gray-100">
+                                    <svg class="absolute left-1 top-1 h-5 w-5 text-gray-400" data-slot="icon"
+                                        fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z">
+                                        </path>
+                                    </svg>
+                                    Ready for the future.
+                                </dt>
+                                <dd class="inline">We are constantly updating Answering AI to use the latest models and
+                                    technology, so your receptionist will become smarter and smarter.</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+                <div class="sm:px-6 lg:px-0">
+                    <div
+                        class="relative isolate overflow-hidden bg-gray-500 px-6 pt-8 sm:mx-auto sm:max-w-2xl sm:rounded-3xl sm:pl-16 sm:pr-0 sm:pt-16 lg:mx-0 lg:max-w-none">
+                        <div class="absolute -inset-y-px -left-3 -z-10 w-full origin-bottom-left skew-x-[-30deg] bg-indigo-900 opacity-20 ring-1 ring-inset ring-white"
+                            aria-hidden="true"></div>
+                        <div class="mx-auto max-w-2xl sm:mx-0 sm:max-w-none">
+                            <div class="w-screen overflow-hidden rounded-tl-xl bg-gray-100 ring-1 ring-white/10">
+                                <div class="flex bg-gray-300/40 ring-1 ring-white/5">
+                                    <div class="-mb-px flex text-sm font-medium leading-6 text-gray-800">
+                                        <div
+                                            class="border-b border-r border-b-gray-800/20 border-r-gray-800/10 bg-gray-800/5 px-4 py-2 text-gray-800">
+                                            Type your prompt here</div>
+                                    </div>
+                                </div>
+                                <div class="px-6 pb-14 pt-6 text-sm text-gray-500">
+                                    <!-- Your code example -->
+                                    <p>You are a phone receptionist for Acme Inc. Your role is to answer questions, and
+                                        in case of any doubt you can't answer in these instructions, create a ticket.
+                                    </p>
+
+                                    <p class="mt-6">To create a ticket, send via Webhooks by Zapier the caller's phone
+                                        number, their name and the issue:</p>
+
+                                    <p class="">Once the ticket is created, tell the caller we will return the call.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/10 sm:rounded-3xl"
+                            aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="relative w-full h-auto bg-white lg:py-42">
+        <div class="relative bg-white">
+            <div class="relative h-80 overflow-hidden bg-gray-600 md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2">
+                <img class="h-full w-full object-cover"
+                    src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=60&amp;blend=636363&amp;sat=-100&amp;blend-mode=multiply"
+                    alt="">
+                <svg viewBox="0 0 926 676" aria-hidden="true"
+                    class="absolute -bottom-24 left-24 w-[57.875rem] transform-gpu blur-[118px]">
+                    <path fill="url(#60c3c621-93e0-4a09-a0e6-4c228a0116d8)" fill-opacity=".4"
+                        d="m254.325 516.708-90.89 158.331L0 436.427l254.325 80.281 163.691-285.15c1.048 131.759 36.144 345.144 168.149 144.613C751.171 125.508 707.17-93.823 826.603 41.15c95.546 107.978 104.766 294.048 97.432 373.585L685.481 297.694l16.974 360.474-448.13-141.46Z">
+                    </path>
+                    <defs>
+                        <linearGradient id="60c3c621-93e0-4a09-a0e6-4c228a0116d8" x1="926.392" x2="-109.635" y1=".176"
+                            y2="321.024" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#776FFF"></stop>
+                            <stop offset="1" stop-color="#FF4694"></stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="relative mx-auto max-w-7xl py-24 sm:py-32 lg:px-8 lg:py-40">
+                <div class="pl-6 pr-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pl-24 lg:pr-0 xl:pl-32">
+                    <p class="mt-2 text-3xl tracking-tight sm:text-4xl">We’re here to help</p>
+                    <p class="mt-6 text-base leading-7 text-gray-900">We have compiled a set of Frequently Asked
+                        Questions. Our resources are designed to help you get the most out of our service with ease. If
+                        you have more doubts, our support team is ready to support you in any step of your journey.</p>
+                    <div
+                        class="flex flex-col items-center justify-center w-full my-6 space-y-4 lg:flex-row lg:justify-start lg:space-y-0 lg:space-x-6 lg:my-10">
+                        <a href="#" onclick="toggleFAQs(); return false"
+                            class="flex items-center justify-center w-full px-8 py-4 text-sm tracking-tight transition duration-200 transform hover:scale-105 sm:px-6 sm:text-lg bg-gradient-to-tr bg-black border-gray-800 border-2 text-white lg:w-auto">
+                            Frequently asked questions
+                        </a>
+                        <a href="#" onclick="modalOpen('#supportModal'); return false;"
+                            class="flex items-center justify-center w-full px-8 py-4 text-sm tracking-tight transition duration-200 transform hover:scale-105 sm:px-6 sm:text-lg group text-gray-800 lg:w-auto">
+                            Contact support ›
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative flex flex-col items-center justify-start h-full mx-auto px-14 max-w-7xl">
+
+            <!-- FAQ Section -->
+            <div id="faqSection" class="w-full grid grid-cols-1 md:grid-cols-2 gap-10 hidden max-w-4xl mx-auto py-20">
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">How easy is it to set up, really?</h3>
+                    <p class="text-sm mt-2 text-gray-700">Actually quite easy. You will be guided through a step-by-step
+                        wizard that will ask for basic information, will guide you on how to connect OpenAI and Twilio,
+                        and will craft a starting prompt. From there, you can just call the assistant and try it for
+                        yourself.</p>
+                    <p class="text-sm mt-2 text-gray-700">Most users can set-up a the full system in less than two
+                        minutes, and a basic prompt for their use case scenario, fitting your business tone or brand
+                        voice in less than 5. If you know how to prompt ChatGPT, you already know how to use Answering
+                        AI. We give you an open prompt offering the flexibility to craft your system, your way. No
+                        limitation from our end.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">Do I require an account in Twilio and OpenAI?</h3>
+                    <p class="text-sm mt-2 text-gray-700">Yes, and for this reason <span class="font-semibold">Twilio
+                            and OpenAI are billed separately</span>. We want to give you full billing control and for
+                        this reason, we decided not to markup over these services.</p>
+                    <p class="text-sm mt-2 text-gray-700">The current OpenAI pricing is located <a
+                            href="https://openai.com/en-US/api/pricing/" class="text-blue-500 underline"
+                            target="_blank">here</a> and Twilio voice pricing located <a
+                            href="https://www.twilio.com/en-us/pricing" class="text-blue-500 underline"
+                            target="_blank">here</a>. You can easily view your OpenAI usage per call (TTS characters,
+                        Whisper seconds, and GPT tokens) <span class="font-semibold">in the Answering AI
+                            dashboard</span>, and estimate Twilio fees using the call duration. This data is updated
+                        when a call is finished.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">Is Answering AI a phone service?</h3>
+                    <p class="text-sm mt-2 text-gray-700">No, it's not. We provide the technical platform to connect
+                        your own phone service (in this case, Twilio), to the latest AI models and provide exceptional
+                        phone answering to your callers through them. We do not provide phone infrastructure or sell
+                        phone numbers, and for this reason, we encourage you to use your own Twilio account when using
+                        our service.</p>
+                    <p class="text-sm mt-2 text-gray-700">Also, due its design, it can only be used for inbound calling,
+                        and cannot be used for telemarketing, unsolicited calls, or any type of outbound calling.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">What models are supported?</h3>
+                    <p class="text-sm mt-2 text-gray-700">We currently only support GPT-4o, the new flagship model from
+                        OpenAI. More info <a href="https://openai.com/index/hello-gpt-4o/"
+                            class="text-blue-500 underline" target="_blank">here</a>. We also use OpenAI's STT (Whisper)
+                        and TTS models, to provide realistic and accurate conversations. All of this runs from <span
+                            class="font-semibold">your own OpenAI account</span>, giving you full control.</p>
+                    <p class="text-sm mt-2 text-gray-700">As it's powered by GPT-4o, your receptionist can manage
+                        complex and nuanced customer queries, making it capable of handling multiple simultaneous calls
+                        efficiently and built to scale even during peak times. For this reason, older models are not
+                        supported.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">Does Answering AI connect to my software?</h3>
+                    <p class="text-sm mt-2 text-gray-700"><span class="font-semibold">If it has a REST API, it
+                            can!</span> While we currently do not do custom integrations, you can easily include the
+                        information to connect to your external service in your prompt. External requests are limited to
+                        a timeout of 20s and 1kb of data. Behind the scenes, Answering AI can do GET, POST, PATCH and
+                        other requests to your endpoint, automagically.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">Can I customize the tone and personality of my AI
+                        phone agent?</h3>
+                    <p class="text-sm mt-2 text-gray-700">Yes, you can! Answering AI allows you to craft the personality
+                        and tone of your AI phone agent through customizable prompts. You can set specific guidelines
+                        for how your agent interacts with callers, ensuring it aligns with your business's brand voice
+                        and customer service standards. Additionally, you can choose from various TTS (text-to-speech)
+                        voices provided by OpenAI to match the desired vocal tone and style of your AI phone agent.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">I'm a huge enterprise, should I contact sales?</h3>
+                    <p class="text-sm mt-2 text-gray-700">We are currently focused on providing the best phone AI
+                        answering system for teams of 10 and less. You can still sign up at the normal rate, but keep in
+                        mind our features are aimed at small and medium businesses.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">How do monthly minutes work?</h3>
+                    <p class="text-sm mt-2 text-gray-700">Each plan includes a set amount of minutes every month, which
+                        are included in the price of the plan. These monthly minutes do not roll over. To prevent
+                        running out of these minutes, you can enable Auto-recharge to use additional minutes at the
+                        plan's specified rate. Both monthly minutes and additional minutes prorated to the second.<span
+                            class="font-semibold">This is completely optional</span>. If you don't enable Auto-recharge,
+                        all calls over the included minutes will be rejected and not billed.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">What happens if I run out of minutes?</h3>
+                    <p class="text-sm mt-2 text-gray-700">You can activate auto-recharge to charge a new block of 1000
+                        minutes automatically once your account reaches less than 100 minutes available. <span
+                            class="font-semibold">Recharged minutes rollover and are always used first</span>. Minutes
+                        are recharged at the additional minute pricing of the plan.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">What are your payment options?</h3>
+                    <p class="text-sm mt-2 text-gray-700">Our subscription are sold by Lemon Squeezy. Payments can be
+                        made using credit or debit cards, and PayPal. Your billing cycle starts on the day of your first
+                        payment and renews monthly (calendar month).</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">Can I test the service before committing to a plan?
+                    </h3>
+                    <p class="text-sm mt-2 text-gray-700">Yes, you can start a free trial to test the service. This
+                        allows you to experience the AI phone answering system firsthand before making a commitment.
+                        Once the trial ends, you will be automatically placed on our Solo Business Plan. You can <span
+                            class="font-semibold">cancel your trial at any time</span>, or upgrade to a plan and finish
+                        the trial early.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">Do I have control of what my AI is doing?</h3>
+                    <p class="text-sm mt-2 text-gray-700">Of course, we provide a detailed call log with call recording
+                        and information about each interaction. This allows you to track usage, analyze performance, and
+                        make informed adjustments to optimize the service for your business needs.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">What happens if my AI phone agent makes a mistake?
+                    </h3>
+                    <p class="text-sm mt-2 text-gray-700">Due to limitations in GPT technology, it's not possible to
+                        provide 100% accurate information all the time. However, you can minimize errors by creating
+                        effective prompts.</p>
+                    <p class="text-sm mt-2 text-gray-700">Answering AI provides you with a blank canvas to create
+                        prompts that limit certain information or fetch updated information from a web resource.
+                        Remember, this is a limitation of the technology itself, not our service.</p>
+                </div>
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">How secure is my data with Answering AI?</h3>
+                    <p class="text-sm mt-2 text-gray-700">Your data security is our top priority. We comply with
+                        industry-standard security practices to ensure your information is safe and secure.
+                        Additionally, we do not use your data for training any models. Since you use your own OpenAI and
+                        Twilio accounts, their own privacy policies and terms of service apply.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="relative w-full h-auto py-20 bg-black lg:py-42">
+        <div class="relative flex flex-col items-center justify-start h-full mx-auto px-14 max-w-3xl">
+            <!-- Title Section -->
+            <div class="w-full text-center text-white mb-10">
+                <h2 class="text-3xl font-light tracking-tight sm:text-4xl">Let AI handle your business phone calls.</h2>
+                <p class="text-xl italic">Create your voice answering system today</p>
+            </div>
+            <!-- Call to Action Button -->
+            <div class="w-full text-center">
+                <a href="/app/signup/"
+                    class="inline-block px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition duration-300">Start
+                    Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section 1 -->
+    <footer class="bg-white">
+        <div class="px-8 pt-16 mx-auto lg:px-12 xl:px-16 max-w-7xl">
+            <div class="flex flex-wrap justify-between pb-20">
+                <a href="/" class="flex md:items-start items-center text-lg font-bold w-1/2 md:w-1/6">
+                    <img class="h-10 object-contain" src="images/oF3Gtqn.png" alt="Answering AI">
+                </a>
+                <div class="grid w-full grid-cols-2 pt-2 sm:grid-cols-4 gap-y-16 lg:gap-x-8 md:w-5/6 md:mt-0 md:pr-6">
+                    <div class="justify-self-center md:justify-self-end">
+                    </div>
+                    <div class="justify-self-centerjustify-center md:justify-self-end">
+                    </div>
+                    <div class="justify-self-center md:justify-self-end">
+                    </div>
+                    <div class="justify-self-center md:justify-self-end">
+                        <h3 class="font-semibold text-black">Resources</h3>
+                        <ul class="mt-6 space-y-4 text-sm">
+                            <li>
+                                <a href="#" onclick="modalOpen('#supportModal'); return false;"
+                                    class="relative inline-block text-black group">
+                                    <span
+                                        class="absolute bottom-0 w-full transition duration-150 ease-out transform -translate-y-1 border-b border-black opacity-0 group-hover:opacity-100 group-hover:translate-y-1"></span>
+                                    <span>Support</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-between py-10 border-t border-solid lg:flex-row border-gray">
+                <ul class="flex flex-wrap space-x-5 text-xs">
+                    <li class="mb-6 text-center flex-full lg:flex-none lg:mb-0">© 2024 Answering AI. All rights
+                        reserved.</li>
+                    <li class="lg:ml-6">
+                        <a href="/privacy/" class="relative inline-block text-black group">
+                            <span
+                                class="absolute bottom-0 w-full transition duration-150 ease-out transform -translate-y-1 border-b border-black opacity-0 group-hover:opacity-100 group-hover:translate-y-0"></span>
+                            <span>Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li class="lg:ml-6">
+                        <a href="/tos/" class="relative inline-block text-black group">
+                            <span
+                                class="absolute bottom-0 w-full transition duration-150 ease-out transform -translate-y-1 border-b border-black opacity-0 group-hover:opacity-100 group-hover:translate-y-0"></span>
+                            <span>Terms and Conditions</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="flex items-center mt-10 space-x-5 lg:mt-0">
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal HTML -->
+    <div id="demoModal" class="fixed inset-0 flex items-center justify-center z-[9999] hidden"
+        aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Background backdrop -->
+        <div class="absolute inset-0 bg-gray-800 bg-opacity-75 transition-opacity"></div>
+
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-xl transform transition-all sm:max-w-lg sm:w-full mx-4">
+            <div class="flex justify-end p-4">
+                <button onclick="modalClose('#demoModal');" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="text-center px-6 pb-6">
+                <div
+                    class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-tr from-black to-gray-800">
+                    <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-semibold text-gray-900 mt-4">Fictional Wedding Planner Demo </h2>
+                <p class="mt-4 text-base text-gray-500">Call this phone number and try our demo.</p>
+                <p class="mt-2 text-2xl text-gray-700">(352) 830-0001</p>
+                <div class="mt-6">
+                    <button type="button" onclick="modalClose('#demoModal');"
+                        class="inline-flex items-center justify-center bg-gradient-to-tr from-black to-gray-800 px-8 py-4 text-sm tracking-tight text-white shadow-lg hover:scale-105 transform transition duration-200">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="supportModal" class="fixed inset-0 flex items-center justify-center z-[9999] hidden"
+        aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Background backdrop -->
+        <div class="absolute inset-0 bg-gray-800 bg-opacity-75 transition-opacity"></div>
+
+        <!-- Modal content -->
+        <div
+            class="relative bg-white rounded-lg shadow-xl transform transition-all sm:max-w-lg sm:w-full mx-4 max-h-screen overflow-hidden">
+            <div class="flex justify-end p-4">
+                <button onclick="modalClose('#supportModal');" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="px-6 pb-6 overflow-y-auto" style="max-height: calc(100vh - 100px);">
+                <h1 class="text-3xl font-semibold text-gray-900">Support</h1>
+                <p class="mt-2 text-gray-700">Use this to contact our support team. We are ready to assist you in any
+                    pre-sales, onboarding or issue you may encounter.</p>
+                <div class="mt-4">
+                    <script src="js/dh-form.js"></script>
+                    <dh-form
+                        url="https://answering-support.deskhero.com/external/forms/dynamic?group=support"></dh-form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- custom javascript -->
+    <!-- <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/circular-audio-wave.min.js"></script> -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
