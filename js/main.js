@@ -76,3 +76,53 @@ function toggleFAQs() {
         faqSection.scrollIntoView({ behavior: 'smooth' });
     }
 } 
+
+
+function toggleAudio() {
+    const audio = document.getElementById('audio');
+    const playButton = document.getElementById('play-button');
+
+    if (audio.paused) {
+        audio.play(); // Play the audio
+        // Change button to indicate stop
+        playButton.innerHTML = `
+            <div class="flip-card visible">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <svg class="text-gray-800 h-24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path fill="black" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <path fill="white" d="M10 8h1v8h-1zM13 8h1v8h-1z"></path>
+                        </svg>
+                    </div>
+                    <div class="flip-card-back">
+                        <svg class="text-gray-800 h-24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path fill="black" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <path fill="white" d="M10 8h1v8h-1zM13 8h1v8h-1z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        audio.pause(); // Pause the audio
+        // Change button back to indicate play
+        playButton.innerHTML = `
+            <div class="flip-card visible">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <svg class="text-gray-800 h-24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path fill="black" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <path fill="white" d="M9 8l7 4-7 4V8z"></path>
+                        </svg>
+                    </div>
+                    <div class="flip-card-back">
+                        <svg class="text-gray-800 h-24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path fill="black" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <path fill="white" d="M10 8h1v8h-1zM13 8h1v8h-1z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+}
