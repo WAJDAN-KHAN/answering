@@ -106,7 +106,7 @@
                         Sign in
                     </a>
                     <span class="inline-flex shadow-sm">
-                        <a href="/app/signup/"
+                        <a href="#"
                             class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap transition duration-150 ease-in-out border border-transparent bg-black hover:bg-black focus:outline-none focus:border-gray-900 focus:shadow-outline-wave active:bg-black">
                             Sign up
                         </a>
@@ -125,7 +125,7 @@
                     class="block px-4 py-2 text-base font-medium leading-6 text-gray-500 hover:text-gray-800 focus:outline-none focus:text-gray-900">
                     Sign in
                 </a>
-                <a href="/app/signup/"
+                <a href="#"
                     class="block px-4 py-2 mt-1 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-black hover:bg-black focus:outline-none focus:border-gray-900 focus:shadow-outline-wave active:bg-black">
                     Sign up
                 </a>
@@ -152,7 +152,7 @@
                     <div class="max-w-lg mx-auto lg:mx-0">
                         <div
                             class="flex flex-col items-center justify-center w-full my-6 space-y-4 lg:flex-row lg:justify-start lg:space-y-0 lg:space-x-6 lg:my-10">
-                            <a href="/app/signup/"
+                            <a href="#"
                                 class="flex items-center justify-center w-full px-8 py-4 text-sm tracking-tight transition duration-200 transform hover:scale-105 sm:px-6 sm:text-lg bg-gradient-to-tr bg-black border-gray-800 border-2 text-white lg:w-auto">
                                 Start Free Trial
                             </a>
@@ -256,7 +256,7 @@
             </div>
             <!-- Call to Action Button -->
             <div class="w-full text-center">
-                <a href="/app/signup/"
+                <a href="#"
                     class="inline-block px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition duration-300">Start
                     Free Trial</a>
             </div>
@@ -735,7 +735,7 @@
             </div>
             <!-- Call to Action Button -->
             <div class="w-full text-center">
-                <a href="/app/signup/"
+                <a href="#"
                     class="inline-block px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition duration-300">Start
                     Free Trial</a>
             </div>
@@ -870,74 +870,7 @@
     <script src="js/jquery-3.7.0.min.js"></script>
     <script src="js/echarts.min.js"></script>
     <script src="js/circular-audio-wave.min.js"></script>
-    <script>
-
-        document.getElementById('hamburger').addEventListener('click', function () {
-            var menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
-        });
-
-
-        function modalOpen(modalId) {
-            document.querySelector(modalId).classList.remove('hidden');
-        }
-
-        function modalClose(modalId) {
-            document.querySelector(modalId).classList.add('hidden');
-        }
-
-        let wave = new CircularAudioWave(document.getElementById('chart-container'), {
-            onEnd: () => {
-                console.log("Audio has ended");
-                const button = document.querySelector('.button');
-                const image = document.querySelector('.image-opacity');
-                const chart = document.querySelector('#chart-container');
-
-                // Reset UI states
-                button.classList.remove('rotate-3d-active');
-                image.classList.remove('image-opacity-hidden');
-                chart.classList.add('image-opacity-hidden');
-
-                isPlaying = false;
-            }
-        });
-
-        let isPlaying = false;
-
-        wave.loadAudio('./images/demo.mp3').then(() => {
-            console.log("Audio loaded successfully");
-            document.querySelector('.button .flip-card').classList.add('visible');
-        }).catch((error) => {
-            console.error("Error loading audio:", error);
-        });
-
-        function toggleState() {
-            const button = document.querySelector('.button');
-            const image = document.querySelector('.image-opacity');
-            const chart = document.querySelector('#chart-container');
-
-            button.classList.toggle('rotate-3d-active');
-            image.classList.toggle('image-opacity-hidden');
-            chart.classList.toggle('image-opacity-hidden');
-
-            if (isPlaying) {
-                wave.stop(); // Stop the audio
-                isPlaying = false;
-            } else {
-                wave.play(); // Start the audio
-                isPlaying = true;
-            }
-        }
-
-        // Add resize event listener to handle chart resizing
-        window.addEventListener('resize', () => {
-            wave.chart.resize();
-        });
-    </script>
+    <script src="./js/main.js"></script>
 
 
 </body>
