@@ -18,53 +18,53 @@ function modalClose(modalId) {
     document.querySelector(modalId).classList.add('hidden');
 }
 
-let wave = new CircularAudioWave(document.getElementById('chart-container'), {
-    onEnd: () => {
-        console.log("Audio has ended");
-        const button = document.querySelector('.button');
-        const image = document.querySelector('.image-opacity');
-        const chart = document.querySelector('#chart-container');
+// let wave = new CircularAudioWave(document.getElementById('chart-container'), {
+//     onEnd: () => {
+//         console.log("Audio has ended");
+//         const button = document.querySelector('.button');
+//         const image = document.querySelector('.image-opacity');
+//         const chart = document.querySelector('#chart-container');
 
-        // Reset UI states
-        button.classList.remove('rotate-3d-active');
-        image.classList.remove('image-opacity-hidden');
-        chart.classList.add('image-opacity-hidden');
+//         // Reset UI states
+//         button.classList.remove('rotate-3d-active');
+//         image.classList.remove('image-opacity-hidden');
+//         chart.classList.add('image-opacity-hidden');
 
-        isPlaying = false;
-    }
-});
+//         isPlaying = false;
+//     }
+// });
 
-let isPlaying = false;
+// let isPlaying = false;
 
-wave.loadAudio('./images/demo.mp3').then(() => {
-    console.log("Audio loaded successfully");
-    document.querySelector('.button .flip-card').classList.add('visible');
-}).catch((error) => {
-    console.error("Error loading audio:", error);
-});
+// wave.loadAudio('./images/demo.mp3').then(() => {
+//     console.log("Audio loaded successfully");
+//     document.querySelector('.button .flip-card').classList.add('visible');
+// }).catch((error) => {
+//     console.error("Error loading audio:", error);
+// });
 
-function toggleState() {
-    const button = document.querySelector('.button');
-    const image = document.querySelector('.image-opacity');
-    const chart = document.querySelector('#chart-container');
+// function toggleState() {
+//     const button = document.querySelector('.button');
+//     const image = document.querySelector('.image-opacity');
+//     const chart = document.querySelector('#chart-container');
 
-    button.classList.toggle('rotate-3d-active');
-    image.classList.toggle('image-opacity-hidden');
-    chart.classList.toggle('image-opacity-hidden');
+//     button.classList.toggle('rotate-3d-active');
+//     image.classList.toggle('image-opacity-hidden');
+//     chart.classList.toggle('image-opacity-hidden');
 
-    if (isPlaying) {
-        wave.stop(); // Stop the audio
-        isPlaying = false;
-    } else {
-        wave.play(); // Start the audio
-        isPlaying = true;
-    }
-}
+//     if (isPlaying) {
+//         wave.stop(); // Stop the audio
+//         isPlaying = false;
+//     } else {
+//         wave.play(); // Start the audio
+//         isPlaying = true;
+//     }
+// }
 
-// Add resize event listener to handle chart resizing
-window.addEventListener('resize', () => {
-    wave.chart.resize();
-}); 
+// // Add resize event listener to handle chart resizing
+// window.addEventListener('resize', () => {
+//     wave.chart.resize();
+// }); 
 
 
  
